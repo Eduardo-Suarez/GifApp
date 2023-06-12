@@ -4,7 +4,7 @@ import { GifItem } from './GifItem';
 
 export const GifGrid = ( {category} ) => {
 
-  const [images, setImages] = useState ([]);
+  const [images, setImages, isLoading] = useState ([]);
 
   const getImages = async() => {
     const newImages = await getGifs(category);
@@ -18,6 +18,9 @@ export const GifGrid = ( {category} ) => {
   return (
     <>
         <h3 >{category}</h3>
+        {
+          isLoading && ( <h2>Cargando...</h2> )
+        }
 
         <div className='card-grid'>
           {
